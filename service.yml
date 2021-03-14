@@ -8,9 +8,7 @@ spec:
   selector:
     app: helloworld-app
     version: blue
-  type: NodePort
   ports:
     - protocol: TCP
-      port: 9090
+      port: 80
       targetPort: 9090
-      nodePort: 31000
