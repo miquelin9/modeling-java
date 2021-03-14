@@ -17,7 +17,6 @@ spec:
     spec:
       containers:
         - name: helloworld-container
-          image: mjordalopez/modeling-java
-          imagePullPolicy: Always
+          image: mjordalopez/modeling-java:latest
           ports:
             - containerPort: 80
