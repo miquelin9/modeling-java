@@ -9,7 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-rest-client-jsonb:1.12.2.Final" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-jsonb:1.12.2.Final" level="project" />
