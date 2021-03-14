@@ -10,9 +10,9 @@ spec:
       version: blue
   template:
     metadata:
-      name: hello-blue-whale-pod
+      name: helloworld-blue-pod
       labels:
-        app: hello-whale-app
+        app: helloworld-app
         version: blue
     spec:
       containers:
@@ -21,18 +21,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: helloworld-service
-  labels:
-    app: helloworld-app
-spec:
-  selector:
-    app: helloworld-app
-    version: blue
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 9090
