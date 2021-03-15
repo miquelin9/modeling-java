@@ -27,7 +27,7 @@ pipeline {
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true test"
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'mvn sonar:sonar'
                 }
             }
             post {
