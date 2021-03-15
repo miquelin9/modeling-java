@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Build & SonarQube analysis') {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main',
@@ -18,7 +18,15 @@ pipeline {
                 url: 'https://github.com/miquelin9/modeling-java.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean install compile"
+                sh "mvn -Dmaven.test.failure.ignore=true clean install compile sonar:sonar"
+            }
+        }
+
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
 
@@ -26,9 +34,6 @@ pipeline {
             steps {
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true test"
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn -e sonar:sonar'
-                }
             }
             post {
                 // If Maven was able to run the tests, even if some of the test
