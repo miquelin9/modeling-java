@@ -18,7 +18,9 @@ pipeline {
                 url: 'https://github.com/miquelin9/modeling-java.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean install compile sonar:sonar"
+                withSonarQubeEnv('SonarQube') {
+                    sh "mvn -Dmaven.test.failure.ignore=true clean install compile sonar:sonar"
+                }
             }
         }
 
